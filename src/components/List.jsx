@@ -6,8 +6,8 @@ const List = () => {
    var item = [];
 
    const getData =() => {
-      axios.get(`https://odd-jade-cocoon-shoe.cyclic.app/gameList`).then((res)=>{
-          setData(res.data);
+      axios.get(`https://odd-jade-cocoon-shoe.cyclic.app/gameList`).then((response)=>{
+          setData(response.data);
       }).catch((err)=>{
          console.log(err);
       })
@@ -20,6 +20,8 @@ const List = () => {
     const addCart = (data) =>{
           item.push(data);
           localStorage.setItem("Cart", JSON.stringify(item));
+          localStorage.setItem("name", JSON.stringify(item[1]));
+
           alert("Item Added To The Cart")
    }
 
@@ -30,6 +32,7 @@ const List = () => {
                 return <div  key={i}>
                     <img src={item.image} alt={item.name} />
                     <h2>{item.name}</h2>
+                    
                     <button onClick={() => addCart(item)}>Add To Cart</button>
                 </div>
             })

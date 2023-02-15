@@ -1,0 +1,27 @@
+.form{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 20%;
+    padding: 10px 10px;
+    margin: auto;
+}
+
+input{
+    margin-bottom: 15px;
+    height: 20px;
+    padding: 5px;
+margin-top: 10px;
+margin-left: 25px;
+}
+label{
+    margin-left: 15px;
+
+}
+.button{
+    background-color: green;
+    color: red;
+    margin: auto;
+    margin-left: 40%;
+}
+button:hover{
+    background-color: aquamarine;
+}

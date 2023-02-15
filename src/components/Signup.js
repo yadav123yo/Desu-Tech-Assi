@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../Style/signup.css"
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -9,10 +10,8 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // save user data in local storage
     localStorage.setItem("user", JSON.stringify(formData));
-    // navigate to the next page
-    // (replace this with your own navigation logic)
+  
     window.location.href = "/login";
   };
 
@@ -24,22 +23,22 @@ function Signup() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="styles.form">
       <label>
         Name:
         <input type="text" name="name" value={formData.name} onChange={handleChange} />
-      </label>
+      </label> <br />
       <label>
         Email:
         <input type="email" name="email" value={formData.email} onChange={handleChange} />
-      </label>
+      </label> <br />
       <label>
         Password:
         <input type="password" name="password" value={formData.password} onChange={handleChange} />
-      </label>
-      <button type="submit">Sign up</button>
+      </label> <br />
+      <button className="styles.button" type="submit">Sign up</button>
     </form>
   );
 }
 
-export default Signup;
+export default Signup;

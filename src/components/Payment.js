@@ -17,9 +17,7 @@ function Payment() {
 
   function handlePaymentSubmit(event) {
     event.preventDefault();
-    // Store the password in local storage with the key "upi"
     localStorage.setItem("upi", password);
-    // Here you can implement the logic to initiate a UPI payment
     alert(`Your booking is done. 
     Your Total Amount is ${total}`);
 

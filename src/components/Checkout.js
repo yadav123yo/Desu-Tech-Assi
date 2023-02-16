@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
 
-const locationOptions = [
-  {
-    Id: 1,
-    Name: "Baghajatin, Kolkata, WB",
-    Distance: 10,
-  },
-  {
-    Id: 2,
-    Name: "Garia, Kolkata, WB",
-    Distance: 20,
-  },
-  {
-    Id: 3,
-    Name: "Sealdaha, Kolkata, WB",
-    Distance: 15,
-  },
-  {
-    Id: 4,
-    Name: "Jadavpur, Kolkata, WB",
-    Distance: 25,
-  },
-];
+// const locationOptions = [
+//   {
+//     Id: 1,
+//     Name: "Baghajatin, Kolkata, WB",
+//     Distance: 10,
+//   },
+//   {
+//     Id: 2,
+//     Name: "Garia, Kolkata, WB",
+//     Distance: 20,
+//   },
+//   {
+//     Id: 3,
+//     Name: "Sealdaha, Kolkata, WB",
+//     Distance: 15,
+//   },
+//   {
+//     Id: 4,
+//     Name: "Jadavpur, Kolkata, WB",
+//     Distance: 25,
+//   },
+// ];
 
 function Checkout() {
   const [eventStartDateTime, setEventStartDateTime] = useState('');

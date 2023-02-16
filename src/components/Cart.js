@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from "../Style/signup.module.css"
 
 const Cart = (props) => {
   const [cartItems, setCartItems] = useState([]);
@@ -16,19 +17,21 @@ const Cart = (props) => {
   };
 
   return (
-    <div className="cart">
+    <div className={styles.container}>
       <h2>Cart</h2>
-      <ul>
+      <div>
+    
         {cartItems.map((item) => (
-          <li key={item.id}>
-           <img src={item.image} alt="" /> 
-            {item.name} - ${item.price}
-            <button onClick={() => removeItem(item.id)}>Remove</button>
-          </li>
+          <div className={styles.dive}  key={item.id}>
+           <img src={item.image} alt="" />  <br />
+           <h2> {item.name}</h2> <br />
+            <button className={styles.buttone} onClick={() => removeItem(item.id)}>Remove</button>
+          </div>
         ))}
-      </ul>
+    
+      </div>
     </div>
   );
 };
 
-export default Cart;
+export default Cart;

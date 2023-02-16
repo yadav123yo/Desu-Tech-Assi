@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../Style/signup.css"
+import styles from "../Style/signup.module.css"
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ function Signup() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="styles.form">
+    <form onSubmit={handleSubmit} className={styles.form}>
       <label>
         Name:
         <input type="text" name="name" value={formData.name} onChange={handleChange} />
@@ -36,7 +36,7 @@ function Signup() {
         Password:
         <input type="password" name="password" value={formData.password} onChange={handleChange} />
       </label> <br />
-      <button className="styles.button" type="submit">Sign up</button>
+      <button className={styles.button} type="submit">Sign up</button>
     </form>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom';
+import styles from "../Style/signup.module.css"
+
 
 const Login = () => {
     
@@ -28,7 +30,7 @@ const Login = () => {
 
   return (
     <div>
-        <form  onSubmit={HandleFormSubmit}>
+        <form className={styles.form} onSubmit={HandleFormSubmit}>
             <h1>Login Form</h1>
             <div>
                 <label>Username : </label>
@@ -37,7 +39,7 @@ const Login = () => {
                 <label>Password : </label>
                 <input type="password" value={password} placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)}  />
                 <br/>
-                <button type="submit">Login</button>
+                <button className={styles.button} type="submit">Login</button>
                 <br/>
                 <p>New user ? {<a href='./signup'>Click here for Register</a>}</p>
             </div>

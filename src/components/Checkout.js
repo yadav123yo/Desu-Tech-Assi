@@ -1,63 +1,121 @@
-import React, { useState } from "react";
-import Calender from "./Calender";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 
-const CheckOut = () => {
-  const [title, setTitle] = useState("");
-  const [phone, setPhone] = useState("");
-  const [center, setCenter] = useState(0);
-  const [dest, setDest] = useState(0);
+const locationOptions = [
+  {
+    Id: 1,
+    Name: "Baghajatin, Kolkata, WB",
+    Distance: 10,
+  },
+  {
+    Id: 2,
+    Name: "Garia, Kolkata, WB",
+    Distance: 20,
+  },
+  {
+    Id: 3,
+    Name: "Sealdaha, Kolkata, WB",
+    Distance: 15,
+  },
+  {
+    Id: 4,
+    Name: "Jadavpur, Kolkata, WB",
+    Distance: 25,
+  },
+];
+
+function Checkout() {
+  const [eventStartDateTime, setEventStartDateTime] = useState('');
+  const [eventEndDateTime, setEventEndDateTime] = useState('');
+  const [setupDateTime, setSetupDateTime] = useState('');
+  const [location, setLocation] = useState('');
+  const [price, setPrice] = useState(0);
   const [charge, setCharge] = useState(0);
+  const [dest, setDest] = useState(0);
 
-  let name = localStorage.getItem("name");
 
-  const handleSubmit = (e) => {
+
+  const handleEventStartDateTimeChange = (event) => {
+    setEventStartDateTime(event.target.value);
+  };
+
+  const handleEventEndDateTimeChange = (event) => {
+    setEventEndDateTime(event.target.value);
+  };
+
+  const handleSetupDateTimeChange = (event) => {
+    setSetupDateTime(event.target.value);
+  };
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+  const handleSubmit = (e) =>{
     e.preventDefault();
-    let distance = center + dest;
-    setCharge(distance * 50);
-    setTitle("");
-    setPhone("");
-  };
-
+    let distance = (0+dest);
+    setCharge(distance*50);
   
-  const changeDestination = (e) => {
-    console.log(dest);
-    setDest(e.target.value);
-  };
+ }
+ const changeDestination = (e) =>{
+  console.log(dest);
+  setDest(e.target.value);
+
+}
+localStorage.setItem("total", JSON.stringify(charge));
 
   return (
     <div>
+      <h1>Checkout Page</h1>
       <form onSubmit={handleSubmit}>
-        <h1>Please fill the form</h1>
-        <input value={name} type="text" />
-        <input
-          type="number"
-          placeholder="Enter your phone number"
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter your name"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <div>
+        <label>
+          Event Start date and time:
+          <input
+            type="datetime-local"
+            value={eventStartDateTime}
+            onChange={handleEventStartDateTimeChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Event End date and time:
+          <input
+            type="datetime-local"
+            value={eventEndDateTime}
+            onChange={handleEventEndDateTimeChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Setup date and time:
+          <input
+            type="datetime-local"
+            value={setupDateTime}
+            onChange={handleSetupDateTimeChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Location where event will be held:
           <select value={dest} onChange={changeDestination}>
             <option value="">Destination</option>
-            <option value="10">Baghajatin, Kolkata, WB</option>
-            <option value="20">Garia, Kolkata, WB</option>
-            <option value="15">Sealdaha, Kolkata, WB</option>
-            <option value="25">Jadavpur, Kolkata, WB</option>
+            <option value="20">Baghajatin, Kolkata, WB</option>
+            <option value="40">Garia, Kolkata, WB</option>
+            <option value="30">Sealdaha, Kolkata, WB</option>
+            <option value="50">Jadavpur, Kolkata, WB</option>
+
           </select>
-        </div>
-        <Calender />
-        <button type="submit">Submit</button>
+        </label>
+        <br />
+        <button type="submit">Submit Enquiry</button>
       </form>
-      <h3>{`You will have to pay RS: ${charge}`}</h3>
-      <Link to="/payment">
-        <p>For Payment</p>
-      </Link>
+      <h3>{`you will have to pay : ${charge}`}</h3>
+
+      <Link to="/payment"><p>Click here to pay</p></Link>
     </div>
   );
-};
+}
 
-export default CheckOut;
+export default Checkout;

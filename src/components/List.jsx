@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import axios from "axios";
+import styles from "../Style/signup.module.css";
+
 
 const List = () => {
    const [data, setData] = useState([]);
@@ -17,7 +19,7 @@ const List = () => {
     getData();
    },[])
 
-    const addCart = (data) =>{
+    const addToCart = (data) =>{
           item.push(data);
           localStorage.setItem("Cart", JSON.stringify(item));
           localStorage.setItem("name", JSON.stringify(item[1]));
@@ -26,14 +28,14 @@ const List = () => {
    }
 
   return (
-     <div>
+     <div className={styles.container} >
         {
             data.map((item,i) => {
-                return <div  key={i}>
+                return <div className={styles.dive}  key={i}>
                     <img src={item.image} alt={item.name} />
                     <h2>{item.name}</h2>
                     
-                    <button onClick={() => addCart(item)}>Add To Cart</button>
+                    <button className={styles.buttone} onClick={() => addToCart(item)}>Add To Cart</button>
                 </div>
             })
         }

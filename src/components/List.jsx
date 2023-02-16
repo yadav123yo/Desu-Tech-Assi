@@ -26,21 +26,29 @@ const List = () => {
 
           alert("Item Added To The Cart")
    }
-
+   
+   if (localStorage.getItem('login') === 'true') {
+      // user is logged in
+      
   return (
-     <div className={styles.container} >
-        {
-            data.map((item,i) => {
-                return <div className={styles.dive}  key={i}>
-                    <img src={item.image} alt={item.name} />
-                    <h2>{item.name}</h2>
-                    
-                    <button className={styles.buttone} onClick={() => addToCart(item)}>Add To Cart</button>
-                </div>
-            })
-        }
-     </div>
-  )
+   <div className={styles.container} >
+      {
+          data.map((item,i) => {
+              return <div className={styles.dive}  key={i}>
+                  <img src={item.image} alt={item.name} />
+                  <h2>{item.name}</h2>
+                  
+                  <button className={styles.buttone} onClick={() => addToCart(item)}>Add To Cart</button>
+              </div>
+          })
+      }
+   </div>
+)
+    } else {
+      // user is not logged in
+    alert("Login first")
+
+}
 }
 
 export default List;

@@ -63,6 +63,8 @@ function Checkout() {
 }
 localStorage.setItem("total", JSON.stringify(charge));
 
+if (localStorage.getItem('login') === 'true') {
+  // user is logged in
   return (
     <div>
       <h1>Checkout Page</h1>
@@ -116,6 +118,11 @@ localStorage.setItem("total", JSON.stringify(charge));
       <Link to="/payment"><p>Click here to pay</p></Link>
     </div>
   );
+} else {
+  // user is not logged in
+alert("Login first")
+
+}
 }
 
 export default Checkout;

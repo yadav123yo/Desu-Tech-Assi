@@ -19,6 +19,7 @@ const Login = () => {
               setAuth(true);
               localStorage.setItem("cred", auth);
               alert("Login Successfully");
+              localStorage.setItem('login', 'true');
               navigate("/list");
          }else{
             setAuth(false);

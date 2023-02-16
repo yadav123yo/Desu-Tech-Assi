@@ -15,23 +15,28 @@ const Cart = (props) => {
     localStorage.setItem('Cart', JSON.stringify(updatedItems));
     
   };
-
-  return (
-    <div className={styles.container}>
-      <h2>Cart</h2>
-      <div>
-    
-        {cartItems.map((item) => (
-          <div className={styles.dive}  key={item.id}>
-           <img src={item.image} alt="" />  <br />
-           <h2> {item.name}</h2> <br />
-            <button className={styles.buttone} onClick={() => removeItem(item.id)}>Remove</button>
-          </div>
-        ))}
-    
+  if (localStorage.getItem('login') === 'true') {
+    // user is logged in
+    return (
+      <div className={styles.container}>
+        <h2>Cart</h2>
+        <div>
+      
+          {cartItems.map((item) => (
+            <div className={styles.dive}  key={item.id}>
+             <img src={item.image} alt="" />  <br />
+             <h2> {item.name}</h2> <br />
+              <button className={styles.buttone} onClick={() => removeItem(item.id)}>Remove</button>
+            </div>
+          ))}
+      
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+alert("login first")  
+
 };
+}
 
 export default Cart;
